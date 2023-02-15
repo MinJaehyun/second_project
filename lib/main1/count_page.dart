@@ -21,13 +21,12 @@ class CountPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GetBuilder<CountController>(
-                builder: (controller) {
-                  // note: test update: 같은 값이여도 화면 rebuild 이뤄지고 있다. 개선방법은 ?
-                  print('Update!!!');
-                  return Text(controller.count.toString(), style: const TextStyle(fontSize: 36));
-                }
-              ),
+              Obx(() {
+                // note: 불필요한 랜더링 확인하기 위한 print
+                print("update");
+                return Text(countController.count.toString(),
+                    style: const TextStyle(fontSize: 36));
+              }),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +56,6 @@ class CountPage extends StatelessWidget {
                         minimumSize: const Size(100, 50)),
                     child: const Icon(Icons.add),
                   ),
-
                 ],
               ),
               const SizedBox(height: 15),
@@ -71,7 +69,7 @@ class CountPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     minimumSize: const Size(100, 50)),
-                child: const Text('5로 변경하기',style: TextStyle(fontSize: 20)),
+                child: const Text('5로 변경하기', style: TextStyle(fontSize: 20)),
               ),
             ],
           ),
