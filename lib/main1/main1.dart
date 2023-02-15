@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {'/count_page': (context) => const CountPage()},
+      routes: {'/count_page': (context) => CountPage()},
       home: const MyPage(),
     );
   }
