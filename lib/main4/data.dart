@@ -1,0 +1,58 @@
+List<Map<String, dynamic>> data = [
+  {
+    'imageUrl': 'assets/main4/images/0.png',
+    'title': '혼자서 본 영화',
+    'author': '정희진',
+    'publisher': '교양인',
+    'bookReturnDate': '2023/03/08',
+  },
+  {
+    'imageUrl': 'assets/main4/images/1.png',
+    'title': '결심만 하는 당신에게',
+    'author': '최명기',
+    'publisher': '알키',
+    'bookReturnDate': '2023/03/11',
+  },
+  {
+    'imageUrl': 'assets/main4/images/0.png',
+    'title': '혼자서 본 영화',
+    'author': '정희진',
+    'publisher': '교양인',
+    'bookReturnDate': '2023/03/08',
+  },
+  {
+    'imageUrl': 'assets/main4/images/1.png',
+    'title': '결심만 하는 당신에게',
+    'author': '최명기',
+    'publisher': '알키',
+    'bookReturnDate': '2023/03/11',
+  },
+  {
+    'imageUrl': 'assets/main4/images/0.png',
+    'title': '혼자서 본 영화',
+    'author': '정희진',
+    'publisher': '교양인',
+    'bookReturnDate': '2023/03/08',
+  },
+  {
+    'imageUrl': 'assets/main4/images/1.png',
+    'title': '결심만 하는 당신에게',
+    'author': '최명기',
+    'publisher': '알키',
+    'bookReturnDate': '2023/03/11',
+  },
+  {
+    'imageUrl': 'assets/main4/images/0.png',
+    'title': '혼자서 본 영화',
+    'author': '정희진',
+    'publisher': '교양인',
+    'bookReturnDate': '2023/03/08',
+  },
+  {
+    'imageUrl': 'assets/main4/images/1.png',
+    'title': '결심만 하는 당신에게',
+    'author': '최명기',
+    'publisher': '알키',
+    'bookReturnDate': '2023/03/11',
+  },
+];
