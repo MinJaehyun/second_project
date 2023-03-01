@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'intro_page.dart';
+import 'posts_page.dart';
 import 'package:scrolling_page_indicator/scrolling_page_indicator.dart';
 
 void main() {
@@ -39,98 +39,60 @@ class IntroducePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          SizedBox(
-            height: 480,
-            child: Column(
-              children: [
-                Expanded(
-                  child: PageView(
-                    children: [
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+      body: SizedBox(
+        height: 480,
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                controller: controller,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 150),
+                        Text('Introduction Screen',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 22)),
+                        SizedBox(height: 10),
+                        Text('${index + 1} 번째 스크린'),
+                        SizedBox(height: 150),
+                        Row(
                           children: [
-                            Text('Introduction Screen',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 22)),
-                            SizedBox(height: 10),
-                            Text('1번째 스크린'),
+                            SizedBox(width: 180),
+                            ScrollingPageIndicator(
+                              dotColor: Colors.grey,
+                              dotSelectedColor: Colors.blue,
+                              dotSize: 6,
+                              dotSelectedSize: 10,
+                              dotSpacing: 12,
+                              controller: controller,
+                              itemCount: 4,
+                              orientation: Axis.horizontal,
+                            ),
+                            SizedBox(width: 70),
+                            if (index == 3)
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                          builder: (context) => PostsPage()),
+                                          (Route<dynamic> route) => false);
+                                },
+                                child: Text('Done'),
+                              ),
                           ],
                         ),
-                      ),
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Introduction Screen',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 22)),
-                            SizedBox(height: 10),
-                            Text('2번째 스크린'),
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Introduction Screen',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 22)),
-                            SizedBox(height: 10),
-                            Text('3번째 스크린'),
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Introduction Screen',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 22)),
-                            SizedBox(height: 10),
-                            Text('4번째 스크린'),
-                          ],
-                        ),
-                      ),
-                    ],
-                    controller: controller,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ScrollingPageIndicator(
-                      dotColor: Colors.grey,
-                      dotSelectedColor: Colors.blue,
-                      dotSize: 6,
-                      dotSelectedSize: 10,
-                      dotSpacing: 12,
-                      controller: controller,
-                      itemCount: 4,
-                      orientation: Axis.horizontal,
+                      ],
                     ),
-                    SizedBox(height: 30),
-                  ],
-                ),
-              ],
+                  );
+                },
+              ),
             ),
-          ),
-          Positioned(
-            left: 300,
-            bottom: -10,
-            child: ElevatedButton(
-              onPressed: () {
-                // todo: 클릭 시, 전체 user list 불러온다
-              },
-              child: Text('Done'),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
