@@ -57,7 +57,7 @@ class _SigninPageState extends State<SigninPage> {
 
   // id,pass 입력 유무 확인
   bool emptyValidate() {
-    return !_id.isEmpty && !_password.isEmpty ? true : false;
+    return !_id.isEmpty && _password.length >= 5 ? true : false;
   }
 
   // 비밀번호 찾기
