@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second_project/main6/view/nick_name_page.dart';
 import 'package:second_project/main6/view/signin_page.dart';
 import 'package:second_project/main6/view/signup_page.dart';
 import 'package:second_project/main6/view/my_page.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => SigninPage(),
         '/signup': (context) => SignupPage(),
         '/my_page': (context) => MyPage(),
+        '/nick_name_page': (context) => NickNamePage(),
       },
     );
   }
