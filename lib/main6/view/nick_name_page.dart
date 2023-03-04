@@ -10,19 +10,19 @@ class NickNamePage extends StatefulWidget {
 
 class _NickNamePageState extends State<NickNamePage> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _nickNameController = TextEditingController();
+  TextEditingController nickNameEditingController = TextEditingController();
   String _nickName = '';
 
   bool _tryValidator() {
-    final formValid = _formKey.currentState!.validate();
-    if (formValid) {
+    final isValid = _formKey.currentState!.validate();
+    if (isValid) {
       _formKey.currentState!.save();
-      return true;
     }
-    return false;
+    return isValid;
   }
 
-  void _shoToastMsg() {
+  // 회원가입 완료 문구
+  void showToast() {
     Fluttertoast.showToast(
       msg: "회원가입을 완료하셨습니다.",
       toastLength: Toast.LENGTH_SHORT,
@@ -36,21 +36,21 @@ class _NickNamePageState extends State<NickNamePage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(Icons.arrow_back_ios),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back_ios),
         ),
-        body: Container(
+      ),
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Container(
           padding: EdgeInsets.all(40),
           child: Form(
             key: _formKey,
@@ -72,9 +72,9 @@ class _NickNamePageState extends State<NickNamePage> {
                       _nickName = newValue!;
                     });
                   },
-                  controller: _nickNameController,
+                  controller: nickNameEditingController,
                   validator: (value) {
-                    if (_nickNameController.text.isEmpty) {
+                    if (value!.isEmpty) {
                       return '닉네임을 입력해주세요.';
                     }
                     return null;
@@ -91,7 +91,7 @@ class _NickNamePageState extends State<NickNamePage> {
                     if (_tryValidator()) {
                       // note: 이 전에 남은 모든 히스토리 제거하는 방법
                       Navigator.of(context).popUntil(ModalRoute.withName('/'));
-                      _shoToastMsg();
+                      showToast();
                     }
                   },
                   style: ElevatedButton.styleFrom(

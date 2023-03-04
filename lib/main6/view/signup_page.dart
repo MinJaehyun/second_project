@@ -9,26 +9,23 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController idController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController passwordVerifiedController = TextEditingController();
+  TextEditingController idEditingController = TextEditingController();
+  TextEditingController passwordEditingController = TextEditingController();
+  TextEditingController passwordVerifiedEditingController = TextEditingController();
   String _id = '';
   String _password = '';
   String _passwordVerify = '';
 
-  late bool next = false;
-
   bool _tryValition() {
-    final verify = _formKey.currentState!.validate();
-    if (verify) {
+    final isValid = _formKey.currentState!.validate();
+    if (isValid) {
       _formKey.currentState!.save();
-      return true;
     }
-    return false;
+    return isValid;
   }
 
-  // id,pass,passVerify 입력 유무 확인
-  bool emptyValidate() {
+  // id, password, password_verify 입력 유무 확인
+  bool validateEmptyForm() {
     return _id.length >= 5 &&
             _password.length >= 5 &&
             _passwordVerify.length >= 5
@@ -44,7 +41,7 @@ class _SignupPageState extends State<SignupPage> {
         leading: IconButton(
           onPressed: () {
             // Navigator.of(context).popAndPushNamed('/');
-            // 방법 1. 현재 히스토리 지우고, 지정한 페이지를 push
+            // 현재 히스토리 지우고, 지정한 페이지를 push
             // 아.. 그래서 스택에 signin 이 2번 쌓이는구나..
             Navigator.of(context).pop();
           },
@@ -82,10 +79,9 @@ class _SignupPageState extends State<SignupPage> {
                     child: Column(
                       children: [
                         TextFormField(
-                          key: ValueKey(1),
-                          controller: idController,
+                          controller: idEditingController,
                           validator: (value) {
-                            if (_id != 'tests' || _id.isEmpty) {
+                            if (value != 'tests' || value!.isEmpty) {
                               return '잘못된 id 를 입력하셨습니다.';
                             }
                             return null;
@@ -104,7 +100,7 @@ class _SignupPageState extends State<SignupPage> {
                             border: OutlineInputBorder(),
                             labelText: '아이디 입력',
                             hintText: '5글자 이상 입력해주세요.',
-                            suffixIcon: idController.text.isEmpty
+                            suffixIcon: idEditingController.text.isEmpty
                                 ? Icon(Icons.check_circle_outline,
                                     color: Colors.grey)
                                 : Icon(Icons.check_circle_outline,
@@ -114,10 +110,9 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 15),
                         TextFormField(
-                          key: ValueKey(2),
-                          controller: passwordController,
+                          controller: passwordEditingController,
                           validator: (value) {
-                            if (_password != '12345' || _password.isEmpty) {
+                            if (value != '12345' || value!.isEmpty) {
                               return '잘못된 password 를 입력하셨습니다.';
                             }
                             return null;
@@ -137,7 +132,7 @@ class _SignupPageState extends State<SignupPage> {
                             border: OutlineInputBorder(),
                             labelText: '비밀번호 입력',
                             hintText: '5글자 이상 입력해주세요.',
-                            suffixIcon: passwordController.text.isEmpty
+                            suffixIcon: passwordEditingController.text.isEmpty
                                 ? Icon(Icons.check_circle_outline,
                                     color: Colors.grey)
                                 : Icon(Icons.check_circle_outline,
@@ -146,11 +141,10 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 15),
                         TextFormField(
-                          key: ValueKey(3),
-                          controller: passwordVerifiedController,
+                          controller: passwordVerifiedEditingController,
                           validator: (value) {
-                            if (passwordController.text !=
-                                passwordVerifiedController.text) {
+                            if (passwordEditingController.text !=
+                                value) {
                               return '동일한 비밀번호를 입력해주세요.';
                             }
                             return null;
@@ -169,7 +163,7 @@ class _SignupPageState extends State<SignupPage> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: '비밀번호 확인',
-                            suffixIcon: passwordVerifiedController.text.isEmpty
+                            suffixIcon: passwordVerifiedEditingController.text.isEmpty
                                 ? Icon(Icons.check_circle_outline,
                                     color: Colors.grey)
                                 : Icon(Icons.check_circle_outline,
@@ -178,7 +172,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 15),
                         OutlinedButton(
-                          onPressed: !emptyValidate()
+                          onPressed: !validateEmptyForm()
                               ? null
                               : () {
                                   if (_tryValition()) {
@@ -190,15 +184,15 @@ class _SignupPageState extends State<SignupPage> {
                             minimumSize: Size(400, 60),
                             elevation: 0,
                             backgroundColor:
-                                emptyValidate() ? Colors.orange : Colors.white,
+                            validateEmptyForm() ? Colors.orange : Colors.white,
                             side: BorderSide(
-                                color: emptyValidate()
+                                color: validateEmptyForm()
                                     ? Colors.white
                                     : Colors.grey),
                           ),
                           child: Text('다음으로',
                               style: TextStyle(
-                                  color: emptyValidate()
+                                  color: validateEmptyForm()
                                       ? Colors.white
                                       : Colors.grey)),
                         ),
