@@ -204,8 +204,7 @@ class _SigninPageState extends State<SigninPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // todo: 클릭 시, 회원가입 페이지로 이동하기
-                          Navigator.of(context).pushNamed('/signup');
+                          Navigator.of(context).popAndPushNamed('/signup');
                         },
                         child: Text('회원가입 | ',
                             style: TextStyle(color: Colors.grey)),
