@@ -204,14 +204,13 @@ class _SigninPageState extends State<SigninPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).popAndPushNamed('/signup');
+                          Navigator.of(context).pushNamed('/signup');
                         },
                         child: Text('회원가입 | ',
                             style: TextStyle(color: Colors.grey)),
                       ),
                       GestureDetector(
                         onTap: () {
-                          // toast msg
                           searchPasswordToastMsg();
                         },
                         child: Text('비밀번호 찾기',
