@@ -62,14 +62,16 @@ class _SigninPageState extends State<SigninPage> {
 
   // 비밀번호 찾기
   void searchPasswordToastMsg() {
-    Fluttertoast.showToast(msg: "해당 기능은 준비 중 입니다",
-        toastLength: Toast.LENGTH_LONG, // Android
-        timeInSecForIosWeb: 1, // iOS
+    Fluttertoast.showToast(
+        msg: "해당 기능은 준비 중 입니다",
+        toastLength: Toast.LENGTH_LONG,
+        // Android
+        timeInSecForIosWeb: 1,
+        // iOS
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.blueAccent,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   @override
@@ -170,11 +172,13 @@ class _SigninPageState extends State<SigninPage> {
                         ),
                         SizedBox(height: 15),
                         ElevatedButton(
-                          onPressed: () async {
-                            if (_tryValidation()) {
-                              Navigator.of(context).pushNamed('/my_page');
-                            }
-                          },
+                          onPressed: !emptyValidate()
+                              ? null
+                              : () async {
+                                  if (_tryValidation()) {
+                                    Navigator.of(context).pushNamed('/my_page');
+                                  }
+                                },
                           child: Text('로그인',
                               style: emptyValidate()
                                   ? TextStyle(color: Colors.white)
