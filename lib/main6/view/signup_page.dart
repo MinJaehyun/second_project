@@ -183,7 +183,7 @@ class _SignupPageState extends State<SignupPage> {
                               : () {
                                   if (_tryValition()) {
                                     Navigator.of(context)
-                                        .popAndPushNamed('/nick_name_page');
+                                        .pushNamed('/nick_name_page');
                                   }
                                 },
                           style: ElevatedButton.styleFrom(
