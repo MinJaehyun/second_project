@@ -89,7 +89,8 @@ class _NickNamePageState extends State<NickNamePage> {
                 ElevatedButton(
                   onPressed: () {
                     if (_tryValidator()) {
-                      Navigator.of(context).popAndPushNamed('/');
+                      // note: 이 전에 남은 모든 히스토리 제거하는 방법
+                      Navigator.of(context).popUntil(ModalRoute.withName('/'));
                       _shoToastMsg();
                     }
                   },
