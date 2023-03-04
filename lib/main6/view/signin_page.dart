@@ -38,7 +38,7 @@ class _SigninPageState extends State<SigninPage> {
             : _passIcon = Icon(null);
       });
     }
-    if (!value.isEmpty) {
+    else {
       setState(() {
         value == idEditingController.text
             ? _idIcon = Icon(Icons.close)
