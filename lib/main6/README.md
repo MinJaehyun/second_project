@@ -12,6 +12,9 @@
 1. [v] 모든 페이지에 변수나 메서드의 명칭 통일하기
  - _id, _password, _tryValidation 
  - 메서드 내 변수 명칭 통일하기
+2. [v] 모든 페이지에서 중복으로 사용하는 코드를 파일로 분리하여 처리하기
+ - signin: showToast
+ - nickname: showToast
 
 ### 정리:
 1. 이 전에 남은 모든 히스토리 제거하는 방법: .popUntil(ModalRoute.withName('/'));
