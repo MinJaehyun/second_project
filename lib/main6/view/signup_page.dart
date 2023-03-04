@@ -181,10 +181,9 @@ class _SignupPageState extends State<SignupPage> {
                           onPressed: !emptyValidate()
                               ? null
                               : () {
-                                  _tryValition();
-                                  // todo: 버튼 클릭 시, 유효성 검증하고 맞으면 로그인 페이지로 이동
                                   if (_tryValition()) {
-                                    Navigator.of(context).popAndPushNamed('/nick_name_page');
+                                    Navigator.of(context)
+                                        .popAndPushNamed('/nick_name_page');
                                   }
                                 },
                           style: ElevatedButton.styleFrom(
