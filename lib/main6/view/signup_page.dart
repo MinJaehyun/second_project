@@ -43,7 +43,10 @@ class _SignupPageState extends State<SignupPage> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).popAndPushNamed('/');
+            // Navigator.of(context).popAndPushNamed('/');
+            // 방법 1. 현재 히스토리 지우고, 지정한 페이지를 push
+            // 아.. 그래서 스택에 signin 이 2번 쌓이는구나..
+            Navigator.of(context).pop();
           },
           icon: Icon(Icons.arrow_back),
         ),
@@ -181,7 +184,7 @@ class _SignupPageState extends State<SignupPage> {
                                   _tryValition();
                                   // todo: 버튼 클릭 시, 유효성 검증하고 맞으면 로그인 페이지로 이동
                                   if (_tryValition()) {
-                                    Navigator.of(context).pushNamed('/');
+                                    Navigator.of(context).popAndPushNamed('/nick_name_page');
                                   }
                                 },
                           style: ElevatedButton.styleFrom(
