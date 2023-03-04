@@ -9,14 +9,15 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  // final GlobalKey _formKey = GlobalKey<FormState>(); // 잘못된 설정
+  // note: GlobalKey 설정 시 currentState!.validate() 호출 불가능
+  // final GlobalKey _formKey = GlobalKey<FormState>();
   final _formKey = GlobalKey<FormState>();
   TextEditingController idEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
-  late String _id = '';
-  late String _password = '';
-  late Icon _idIcon = Icon(null);
-  late Icon _passIcon = Icon(null);
+  String _id = '';
+  String _password = '';
+  Icon _idIcon = Icon(null);
+  Icon _passIcon = Icon(null);
 
   @override
   void initState() {
@@ -48,27 +49,28 @@ class _SigninPageState extends State<SigninPage> {
 
   // valitation 함수
   bool _tryValidation() {
-    bool isValidate = _formKey.currentState!.validate();
-    if (isValidate) {
+    bool isValid = _formKey.currentState!.validate();
+    if (isValid) {
       _formKey.currentState!.save();
     }
-    return isValidate;
+    return isValid;
   }
 
   // id,pass 입력 유무 확인
-  bool emptyValidate() {
+  bool validateEmptyForm() {
     return !_id.isEmpty && _password.length >= 5 ? true : false;
   }
 
   // 비밀번호 찾기
-  void searchPasswordToastMsg() {
-    Fluttertoast.showToast(msg: "해당 기능은 준비 중 입니다",
+  void showToast() {
+    Fluttertoast.showToast(
+        msg: "해당 기능은 준비 중 입니다",
         toastLength: Toast.LENGTH_LONG, // Android
         timeInSecForIosWeb: 1, // iOS
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.blueAccent,
         textColor: Colors.white,
-        fontSize: 16.0
+        fontSize: 16.0,
     );
   }
 
@@ -114,7 +116,6 @@ class _SigninPageState extends State<SigninPage> {
                             }
                             return null;
                           },
-                          key: ValueKey(1),
                           onChanged: (value) {
                             setState(() {
                               // idEditingController.text = value; // 잘못된 방법
@@ -146,7 +147,6 @@ class _SigninPageState extends State<SigninPage> {
                             return null;
                           },
                           obscureText: true,
-                          key: ValueKey(2),
                           controller: passwordEditingController,
                           onChanged: (value) {
                             setState(() {
@@ -170,25 +170,27 @@ class _SigninPageState extends State<SigninPage> {
                         ),
                         SizedBox(height: 15),
                         ElevatedButton(
-                          onPressed: () async {
-                            if (_tryValidation()) {
-                              Navigator.of(context).pushNamed('/my_page');
-                            }
-                          },
+                          onPressed: !validateEmptyForm()
+                              ? null
+                              : () async {
+                                  if (_tryValidation()) {
+                                    Navigator.of(context).pushNamed('/my_page');
+                                  }
+                                },
                           child: Text('로그인',
-                              style: emptyValidate()
+                              style: validateEmptyForm()
                                   ? TextStyle(color: Colors.white)
                                   : TextStyle(color: Colors.grey)),
                           style: ElevatedButton.styleFrom(
                               // borderSide 전체 두께와 색 설정
-                              side: emptyValidate()
+                              side: validateEmptyForm()
                                   ? null
                                   : BorderSide(
                                       width: 1.0,
                                       color: Colors.grey,
                                     ),
                               elevation: 0,
-                              backgroundColor: emptyValidate()
+                              backgroundColor: validateEmptyForm()
                                   ? Colors.orange
                                   : Colors.white,
                               minimumSize: Size(400, 55)),
@@ -204,7 +206,6 @@ class _SigninPageState extends State<SigninPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // todo: 클릭 시, 회원가입 페이지로 이동하기
                           Navigator.of(context).pushNamed('/signup');
                         },
                         child: Text('회원가입 | ',
@@ -212,8 +213,7 @@ class _SigninPageState extends State<SigninPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // toast msg
-                          searchPasswordToastMsg();
+                          showToast();
                         },
                         child: Text('비밀번호 찾기',
                             style: TextStyle(color: Colors.grey)),
