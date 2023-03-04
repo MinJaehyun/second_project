@@ -19,3 +19,10 @@
 ### 정리:
 1. 이 전에 남은 모든 히스토리 제거하는 방법: .popUntil(ModalRoute.withName('/'));
 2. 이 전에 히스토리 제거 방법: .pop();
+
+### 에러:
+1. [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: 'package:flutter/src/services/hardware_keyboard.dart': Failed assertion: line 432 pos 16: '_pressedKeys.containsKey(event.physicalKey)': A KeyUpEvent is dispatched, but the state shows that the physical key is not pressed. If this occurs in real application, please report this bug to Flutter. If this occurs in unit tests, please ensure that simulated events follow Flutter's event model as documented in `HardwareKeyboard`. This was the event: KeyUpEvent#08e61(physicalKey: PhysicalKeyboardKey#e6f4b(usbHidUsage: "0x0007002a", debugName: "Backspace"), logicalKey: LogicalKeyboardKey#147d9(keyId: "0x100000008", keyLabel: "Backspace", debugName: "Backspace"), character: null, timeStamp: 0:00:29.481869, synthesized)
+ - [X] Windows Version (Unable to confirm if installed Windows version is 10 or greater)
+ - flutter upgrade
+ - flutter channel master
+ - flutter doctor -v
