@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:second_project/main6/duplicated_function/toast_msg.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({Key? key}) : super(key: key);
@@ -59,19 +59,6 @@ class _SigninPageState extends State<SigninPage> {
   // id,pass 입력 유무 확인
   bool validateEmptyForm() {
     return !_id.isEmpty && _password.length >= 5 ? true : false;
-  }
-
-  // 비밀번호 찾기
-  void showToast() {
-    Fluttertoast.showToast(
-        msg: "해당 기능은 준비 중 입니다",
-        toastLength: Toast.LENGTH_LONG, // Android
-        timeInSecForIosWeb: 1, // iOS
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.blueAccent,
-        textColor: Colors.white,
-        fontSize: 16.0,
-    );
   }
 
   @override
@@ -213,7 +200,8 @@ class _SigninPageState extends State<SigninPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          showToast();
+                          // 비밀번호 찾기
+                          ToastMsg.showToast(msg: '해당 기능은 준비 중 입니다');
                         },
                         child: Text('비밀번호 찾기',
                             style: TextStyle(color: Colors.grey)),

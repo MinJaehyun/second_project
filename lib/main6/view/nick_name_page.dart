@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:second_project/main6/duplicated_function/toast_msg.dart';
 
 class NickNamePage extends StatefulWidget {
   const NickNamePage({Key? key}) : super(key: key);
@@ -19,19 +19,6 @@ class _NickNamePageState extends State<NickNamePage> {
       _formKey.currentState!.save();
     }
     return isValid;
-  }
-
-  // 회원가입 완료 문구
-  void showToast() {
-    Fluttertoast.showToast(
-      msg: "회원가입을 완료하셨습니다.",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.black54,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
   }
 
   @override
@@ -91,7 +78,8 @@ class _NickNamePageState extends State<NickNamePage> {
                     if (_tryValidator()) {
                       // note: 이 전에 남은 모든 히스토리 제거하는 방법
                       Navigator.of(context).popUntil(ModalRoute.withName('/'));
-                      showToast();
+                      // 회원가입 완료 문구
+                      ToastMsg.showToast(msg: '회원가입을 완료하셨습니다.');
                     }
                   },
                   style: ElevatedButton.styleFrom(
