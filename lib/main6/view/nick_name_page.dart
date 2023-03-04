@@ -45,7 +45,7 @@ class _NickNamePageState extends State<NickNamePage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              // todo: 뒤로가기 버튼 있어야 하나??
+              Navigator.of(context).pop();
             },
             icon: Icon(Icons.arrow_back_ios),
           ),
@@ -89,7 +89,7 @@ class _NickNamePageState extends State<NickNamePage> {
                 ElevatedButton(
                   onPressed: () {
                     if (_tryValidator()) {
-                      Navigator.of(context).pushReplacementNamed('/');
+                      Navigator.of(context).popAndPushNamed('/');
                       _shoToastMsg();
                     }
                   },
