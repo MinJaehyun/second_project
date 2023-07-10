@@ -13,7 +13,7 @@ class _PostsPageState extends State<PostsPage> {
   List<Posts> posts = <Posts>[];
   bool isLoading = false;
 
-  Future<List<Posts>> fecthPosts() async {
+  Future<List<Posts>> fetchPosts() async {
     Service.getPosts().then((value) {
       setState(() {
         posts = value;
@@ -34,9 +34,11 @@ class _PostsPageState extends State<PostsPage> {
       ),
       body: FutureBuilder(
         // note: FutureBuilder 미사용 시, initState 로 즉시 호출하기
-        future: fecthPosts(),
+        future: fetchPosts(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          // note: ConnectionState.waiting 처리하면 화면 깜빡이는 이유는 ? setState 로 화면 계속 갱신하기 때문이다
+          // setState 를 하지 않을 수 없으므로, 데이터가 있은 경우에만 처리하도록 한다
+          if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           }
           return ListView.builder(
