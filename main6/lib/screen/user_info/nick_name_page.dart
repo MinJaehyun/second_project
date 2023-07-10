@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/main6/duplicated_function/toast_msg.dart';
+import 'package:main6/helper/toast_msg.dart';
 
 class NickNamePage extends StatefulWidget {
   const NickNamePage({Key? key}) : super(key: key);

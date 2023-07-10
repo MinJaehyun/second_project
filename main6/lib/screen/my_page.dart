@@ -7,8 +7,13 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Center(
-              child: Text('빈 페이지: 테스트 중입니다', style: TextStyle(fontSize: 20)))),
+        child: Center(
+          child: Text(
+            '테스트 중 입니다',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+      ),
     );
   }
 }

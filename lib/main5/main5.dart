@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'posts_page.dart';
-import 'package:scrolling_page_indicator/scrolling_page_indicator.dart';
 
 void main() {
   runApp(MyApp());
