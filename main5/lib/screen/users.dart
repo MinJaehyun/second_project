@@ -23,9 +23,7 @@ class _UsersState extends State<Users> {
     var url = 'https://jsonplaceholder.typicode.com/users/';
     Network network = Network(url);
     var parsingData = await network.fetchUsers();
-    setState(() {
-      userLength = parsingData.length;
-    });
+    userLength = parsingData.length;
     return parsingData;
   }
 
