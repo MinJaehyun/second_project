@@ -16,13 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // note: primarySwatch: 앱의 일부 위젯, 버튼, 타이틀 바 등에서 orange 색이 자동으로 적용 (입력창 focuse 된 테두리 orange 로 변경함)
-        primarySwatch: Colors.orange,
+        // note: Material2의 primarySwatch 대신 Material3의 colorScheme 적용
+        // primarySwatch: Colors.orange,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         // note: 앱 전체 abbBar 의 색상 지정
         appBarTheme: AppBarTheme(
-          // icon 색
           iconTheme: IconThemeData(color: Colors.blue),
-          // 배경색
           color: Colors.white,
         ),
       ),
