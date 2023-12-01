@@ -1,6 +1,6 @@
 ### 구조
     main
-    ㄴ LoginPage
+    ㄴ screen/LoginPage
         ㄴ helper/toast_msg - fluttertoast 패키지
         ㄴ my_page - 로그인 성공 후 이동하는 페이지
         ㄴ signup - 로그인 화면에서 회원 가입을 하기 위해 이동하는 페이지
