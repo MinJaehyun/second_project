@@ -14,9 +14,9 @@ class Count extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // note: Reactive state mangement: 즉시 업데이트 기능을 한다
+              // note: Reactive state mangement 중 Obx: 즉시 업데이트 기능을 한다
               Obx(() {
-                return Text(countController.count.toString(),
+                return Text('count: ${countController.count().count}',
                     style: const TextStyle(fontSize: 36));
               }),
               const SizedBox(height: 20),
@@ -53,15 +53,15 @@ class Count extends StatelessWidget {
               const SizedBox(height: 15),
               ElevatedButton(
                 onPressed: () {
-                  countController.countValue(5);
+                  countController.countValue(0);
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.brown,
+                    backgroundColor: Colors.orange,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     minimumSize: const Size(100, 50)),
-                child: const Text('5로 변경하기', style: TextStyle(fontSize: 20)),
+                child: const Text('0 으로 초기화', style: TextStyle(fontSize: 20)),
               ),
             ],
           ),

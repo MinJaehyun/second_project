@@ -11,7 +11,6 @@ class CountController extends GetxController{
     _count.update((val) {
       val?.count++;
     });
-    // 위와 결과 값이 같다: count(count.value + 1);
   }
 
   void countDown() {
@@ -22,7 +21,7 @@ class CountController extends GetxController{
 
   void countValue(int value) {
     _count.update((val) {
-      _count(value as Count?);
+      val?.count = value;
     });
   }
 }
