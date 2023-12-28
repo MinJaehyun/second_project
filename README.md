@@ -4,8 +4,6 @@
 
     main02: Table 위젯 사용
 
-    main03: GetX 사용 비교
-
     main04: ListView.builder 사용해 스크롤뷰 제작
 
     main05: Introduction Screen
