@@ -11,3 +11,5 @@
     3. 대출일과 반납일이 고정 되어있으며, 반납 하루 전 이므로 D-1 나타낸다
       - (반납일 - 오늘) = D-1 나타낸다
       
+### result
+![result.png](manin04%2Flib%2Fresult.png)
