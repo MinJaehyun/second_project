@@ -1,2 +1,2 @@
 # main5: Introduction Screen
-![result.gif](..%2F..%2F..%2FDownloads%2Fresult.gif)
+![main05_result.gif](main05%2Flib%2Fmain05_result.gif)
