@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main6/screen/login_and_signup/login.dart';
-import 'package:main6/screen/my_page.dart';
+import 'package:main6/screen/success_login/my_page.dart';
 import 'package:main6/screen/user_info/nick_name_page.dart';
 import 'package:main6/screen/login_and_signup/signup.dart';
 

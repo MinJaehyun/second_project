@@ -44,9 +44,10 @@ class _NickNamePageState extends State<NickNamePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('닉네임 입력',
-                    style:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                Text(
+                  '닉네임 입력',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
                 SizedBox(height: 15),
                 TextFormField(
                   onChanged: (value) {
@@ -84,6 +85,7 @@ class _NickNamePageState extends State<NickNamePage> {
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(400, 60),
+                    backgroundColor: Colors.green
                   ),
                   child: Text('가입 완료', style: TextStyle(color: Colors.white)),
                 ),
@@ -95,3 +97,5 @@ class _NickNamePageState extends State<NickNamePage> {
     );
   }
 }
+
+// todo: 추 후, 닉네임 중복 체크 기능 넣기

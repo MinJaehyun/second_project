@@ -1,13 +1,13 @@
-### 구조
+### 기능
     main
     ㄴ screen/LoginPage
+        ㄴ signup - 회원 가입 페이지
+            ㄴ nick_name_page - 닉네임 생성 페이지
         ㄴ helper/toast_msg - fluttertoast 패키지
         ㄴ my_page - 로그인 성공 후 이동하는 페이지
-        ㄴ signup - 로그인 화면에서 회원 가입을 하기 위해 이동하는 페이지
-            ㄴ nick_name_page - 닉네임 설정 페이지
 
 ### 실행 방법
-    id: tests , password: 12345 입력 후, 로그인 버튼 클릭
+    1. 회원가입 없이 id: tests, password: 12345 입력 후 로그인할 수 있다
 
 
 ### fixme:

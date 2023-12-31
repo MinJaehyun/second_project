@@ -28,7 +28,7 @@ class _SignupState extends State<Signup> {
 
   // id, password, password_verify 입력 유무 확인
   bool validateEmptyForm() {
-    return (_id.length >= 5) && (_password.length >= 5) && (_passwordVerify.length >= 5) ? true : false;
+    return (_id.length >= 5) && (_password.length >= 5) && (_password == _passwordVerify) ? true : false;
   }
 
   @override
@@ -80,7 +80,7 @@ class _SignupState extends State<Signup> {
                             border: OutlineInputBorder(),
                             labelText: '아이디 입력',
                             hintText: '5글자 이상 입력해 주세요.',
-                            suffixIcon: idEditingController.text.isEmpty ? Icon(Icons.check_circle_outline, color: Colors.grey) : Icon(Icons.check_circle_outline, color: Colors.green),
+                            suffixIcon: idEditingController.text.length <= 4 ? Icon(Icons.check_circle_outline, color: Colors.grey) : Icon(Icons.check_circle_outline, color: Colors.green),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -99,7 +99,7 @@ class _SignupState extends State<Signup> {
                             border: OutlineInputBorder(),
                             labelText: '비밀 번호 입력',
                             hintText: '5글자 이상 입력해 주세요.',
-                            suffixIcon: passwordEditingController.text.isEmpty ? Icon(Icons.check_circle_outline, color: Colors.grey) : Icon(Icons.check_circle_outline, color: Colors.green),
+                            suffixIcon: passwordEditingController.text.length <= 4 ? Icon(Icons.check_circle_outline, color: Colors.grey) : Icon(Icons.check_circle_outline, color: Colors.green),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -117,7 +117,9 @@ class _SignupState extends State<Signup> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: '비밀 번호 확인',
-                            suffixIcon: passwordVerifiedEditingController.text.isEmpty ? Icon(Icons.check_circle_outline, color: Colors.grey) : Icon(Icons.check_circle_outline, color: Colors.green),
+                            hintText: '동일한 비밀 번호를 입력해 주세요.',
+                            // todo: 검증된 비밀번호의 개수가 5이하면 회색 지정하기
+                            suffixIcon: _passwordVerify.isEmpty || _passwordVerify != _password ? Icon(Icons.check_circle_outline, color: Colors.grey) : Icon(Icons.check_circle_outline, color: Colors.green),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -149,3 +151,5 @@ class _SignupState extends State<Signup> {
     );
   }
 }
+
+// todo: 추 후, 회원 가입 화면에서 로그인 화면으로 이동하는 기능 만들기
