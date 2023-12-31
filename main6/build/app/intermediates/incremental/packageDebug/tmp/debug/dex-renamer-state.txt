@@ -1,0 +1,4 @@
+#Sun Dec 31 15:26:32 KST 2023
+base.0=/Users/jh/Desktop/m/second_project/main6/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
